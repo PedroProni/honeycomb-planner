@@ -15,4 +15,21 @@ button {
   cursor: pointer;
 }
 
-
+.background {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(rgba(184, 157, 121, 0.8), rgba(184, 157, 121, 0.8)),url(https://www.dadant.com/wp-content/uploads/2022/02/honeycomb-1707x1280.jpg);
+  background-position: center;
+  background-size: cover;
+}
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-top: 10px;
+}

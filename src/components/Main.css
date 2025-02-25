@@ -3,14 +3,28 @@
   padding: 30px;
   margin: 50px auto;
   max-width: 500px;
-  border-radius: 8px;
-  box-shadow: 0 0 4px #000;
+  border-radius: 10px;
+  box-shadow: 0 0 8px #000;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-right: 20px;
 }
 
 .main h1 {
   font-size: 24px;
   text-align: center;
-  margin-bottom: 20px;
+  margin-right: 10px;
+}
+
+.main .honey-icon {
+  font-size: 50px;
+  color: #B89D79;
+  margin-right: 10px;
 }
 
 .form {
@@ -43,3 +57,28 @@
   border-radius: 8px;
   margin-left: 10px;
 }
+
+.tasks {
+  margin-top: 30px;
+}
+
+.tasks li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.tasks li:hover {
+  background-color: #423b38;
+}
+
+.tasks li .edit,
+.tasks li .delete {
+  margin-right: 15px;
+  color: #B89D79;
+  cursor: pointer;
+  transition: all 0.9s;
+}
+
+
