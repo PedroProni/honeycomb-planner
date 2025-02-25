@@ -12,11 +12,57 @@ import "./Main.css";
 class Main extends Component {
   state = {
     newTask: "",
-    tasks: ["Task 1", "Task 2", "Task 3"],
+    tasks: [],
+    index: -1,
   };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { tasks, index } = this.state;
+    let { newTask } = this.state;
+    newTask = newTask.trim();
+
+    if (tasks.indexOf(newTask) !== -1) return;
+
+    const newTasks = [...tasks];
+
+    if (index === -1) {
+      this.setState({
+        tasks: [...newTasks, newTask],
+        newTask: "",
+      });
+      return;
+    } else {
+      newTasks[index] = newTask;
+
+      this.setState({
+        tasks: [...newTasks],
+        newTask: "",
+        index: -1,
+      });
+    }
+    
+  }
+
 
   handleChange = (e) => {
     this.setState({ newTask: e.target.value });
+  };
+
+  handleEdit = (e, i) => {
+    const { tasks } = this.state;
+
+    this.setState({
+      index: i,
+      newTask: tasks[i],
+    })
+  };
+
+  handleDelete = (e, i) => {
+    const { tasks } = this.state;
+    const newTasks = [...tasks];
+    newTasks.splice(i, 1);
+    this.setState({ tasks: [...newTasks] });
   };
 
   render() {
@@ -28,7 +74,7 @@ class Main extends Component {
           <LuHexagon className="honey-icon" />
           <h1>Honeycomb Planner</h1>
         </div>
-        <form action="#" className="form">
+        <form onSubmit={this.handleSubmit} action="#" className="form">
           <input
             onChange={this.handleChange}
             type="text"
@@ -41,14 +87,14 @@ class Main extends Component {
         </form>
 
         <ul className="tasks">
-          {tasks.map((task) => {
+          {tasks.map((task, i) => {
             return (
               <li key={task}>
                 {task}
-                <div>
-                  <FaEdit className="edit" />{" "}
-                  <FaTrash className="delete" />
-                </div>
+                <span>
+                  <FaEdit onClick={(e) => this.handleEdit(e, i)} className="edit" />{" "}
+                  <FaTrash onClick={(e) => this.handleDelete(e, i)} className="delete" />
+                </span>
               </li>
             );
           })}

@@ -71,6 +71,7 @@
 
 .tasks li:hover {
   background-color: #423b38;
+  transition: all 0.8s;
 }
 
 .tasks li .edit,
@@ -78,7 +79,10 @@
   margin-right: 15px;
   color: #B89D79;
   cursor: pointer;
-  transition: all 0.9s;
 }
 
+.tasks li span {
+  display: flex;
+  align-items: center;
+}
 
